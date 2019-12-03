@@ -12,9 +12,19 @@ app.use(session({
     saveUninitialized: true
 }));
 
+app.use(express.urlencoded({extended: true}));
+
 //routes
 app.get("/", function(req, res) {
    res.render("index");
+});
+
+app.post("/", function(req, res) {
+    let username = req.body.username;
+    let password = req.body.password;
+    console.log("username: " + username);
+    console.log("password: " + password);
+    res.send("This is the root route using POST!");
 });
 
 //listener
